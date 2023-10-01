@@ -16,21 +16,20 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Java', link: '/java/java-basic' },
-    {
+        {
         text: "面试指南",
         items: [
-			{
-				text: "Java",
-				items: [
-					{text: "基础", link: "/java/java-basic.md", },
-					{text: "集合", link: "/java/java-collection.md", },
-					{text: "并发", link: "/java/java-concurrent.md", },
-					{text: "JVM", link: "/java/jvm.md", },
-					{text: "Java8", link: "/java/java8", },
-					{text: "Tomcat", link: "/web/tomcat.md", },
-				]
-			},
+      {
+        text: "Java",
+        items: [
+          {text: "基础", link: "/java/java-basic.md", },
+          {text: "集合", link: "/java/java-collection.md", },
+          {text: "并发", link: "/java/java-concurrent.md", },
+          {text: "JVM", link: "/java/jvm.md", },
+          {text: "Java8", link: "/java/java8", },
+          {text: "Tomcat", link: "/web/tomcat.md", },
+        ]
+      },
             {
                 text: "框架",
                 items: [
@@ -68,19 +67,19 @@ export default defineConfig({
                     {text: "MongoDB面试题", link: "/database/mongodb.md", },
                 ]
             },
-			{
-				text: "计算机基础",
-				items: [
-					{text: "网络", link: "/computer-basic/network.md", },
+      {
+        text: "计算机基础",
+        items: [
+          {text: "网络", link: "/computer-basic/network.md", },
                     {text: "TCP专题", link: "/computer-basic/tcp.md", },
-					{text: "操作系统", link: "/computer-basic/operate-system.md", },
-					{text: "算法", link: "/computer-basic/algorithm.md", },
-					{text: "LeetCode题解", link: "/leetcode/hot120", },
-					{text: "数据结构", link: "/computer-basic/data-structure.md", },
-				]
-			},
-		]
-	},
+          {text: "操作系统", link: "/computer-basic/operate-system.md", },
+          {text: "算法", link: "/computer-basic/algorithm.md", },
+          {text: "LeetCode题解", link: "/leetcode/hot120", },
+          {text: "数据结构", link: "/computer-basic/data-structure.md", },
+        ]
+      },
+    ]
+  },
     {
         text: "进阶之路",
         items: [
@@ -114,31 +113,31 @@ export default defineConfig({
                     {text: "10w级别数据Excel导入怎么优化？", link: "/advance/system-design/README.md", },
                 ]
             },
-		    {
-				text: "分布式",
-				items: [
-					{text: "全局唯一ID", link: "/advance/distributed/1-global-unique-id.md", },
-					{text: "分布式锁", link: "/advance/distributed/2-distributed-lock.md", },
-					{text: "RPC", link: "/advance/distributed/3-rpc.md", },
-					{text: "微服务", link: "/advance/distributed/4-micro-service.md", },
-					{text: "分布式架构", link: "/advance/distributed/5-distibuted-arch.md", },
-					{text: "分布式事务", link: "/advance/distributed/6-distributed-transaction.md", },
-				]
-			},
-		    {
-				text: "高并发",
-				items: [
-					{text: "限流", link: "/advance/concurrent/1-current-limiting.md", },
-					{text: "负载均衡", link: "/advance/concurrent/2-load-balance.md", },
-				],
-			},
+        {
+        text: "分布式",
+        items: [
+          {text: "全局唯一ID", link: "/advance/distributed/1-global-unique-id.md", },
+          {text: "分布式锁", link: "/advance/distributed/2-distributed-lock.md", },
+          {text: "RPC", link: "/advance/distributed/3-rpc.md", },
+          {text: "微服务", link: "/advance/distributed/4-micro-service.md", },
+          {text: "分布式架构", link: "/advance/distributed/5-distibuted-arch.md", },
+          {text: "分布式事务", link: "/advance/distributed/6-distributed-transaction.md", },
+        ]
+      },
+        {
+        text: "高并发",
+        items: [
+          {text: "限流", link: "/advance/concurrent/1-current-limiting.md", },
+          {text: "负载均衡", link: "/advance/concurrent/2-load-balance.md", },
+        ],
+      },
             {
-				text: "设计模式",
-				items: [
-					{text: "设计模式详解", link: "/advance/design-pattern/", },
-				],
-			},
-			{
+        text: "设计模式",
+        items: [
+          {text: "设计模式详解", link: "/advance/design-pattern/", },
+        ],
+      },
+      {
                 text: "优质文章",
                 items: [
                     {text: "优质文章汇总", link: "/advance/excellent-article", },
