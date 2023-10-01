@@ -6,8 +6,8 @@ node_modules/
 .idea/
 *.py
 public/
-docs/.vuepress/.temp/
-docs/.vuepress/.cache/
+docs/.vitepress/cache/
+docs/.vitepress/dist/
 ByteDanceVerify.html
 google053c90e5a7354c40.html
 sogousiteverification.txt

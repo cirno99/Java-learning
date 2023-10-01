@@ -566,7 +566,7 @@ public class User2ServiceImpl implements User2Service {
 
 假设我们有一个注册的方法，方法中调用添加积分的方法，如果我们希望添加积分不会影响注册流程（即添加积分执行失败回滚不能使注册方法也回滚），我们会这样写：
 
-```jaav
+```java
    @Service
    public class UserServiceImpl implements UserService {
 
