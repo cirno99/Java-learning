@@ -1,15 +1,28 @@
 import { defineConfig } from 'vitepress'
 import AutoSidebar from "vite-plugin-vitepress-auto-sidebar";
 
+import { SearchPlugin } from "vitepress-plugin-search";
+import flexSearchIndexOptions from "flexsearch";
 
-let tmp:any = { prefix: '.', collapsed: false };
+let sideBarOptions:any = { prefix: '.', collapsed: false };
+
+//default options
+var searchOptions = {
+  ...flexSearchIndexOptions,
+  previewLength: 100, //搜索结果预览长度
+  buttonLabel: "搜索",
+  placeholder: "情输入关键词",
+};
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "JavaLearning",
   description: "Java",
   vite: {
-    plugins: [AutoSidebar(tmp)],
+    plugins: [
+            AutoSidebar(sideBarOptions),
+            SearchPlugin(searchOptions)
+        ],
   },
   ignoreDeadLinks: true,
   themeConfig: {
