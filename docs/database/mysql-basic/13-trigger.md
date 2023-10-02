@@ -6,7 +6,7 @@
 
 创建触发器四要素：1.唯一的触发器名（MySQL5规定触发器名在表中唯一，数据库没要求）；2.触发器关联的表；3.相应的SQL语句；4.何时执行（处理之前或者之后）。
 
-```mysql
+```sql
 CREATE TRIGGER newproduct AFTER INSERT ON products #插入之后执行
 FOR EACH ROW SELECT 'product added'; #对每个插入行执行
 ```
@@ -21,14 +21,14 @@ FOR EACH ROW SELECT 'product added'; #对每个插入行执行
 
 INSERT 触发器可饮用名为 NEW  的虚拟表，访问被插入的行。NEW中的值也可以被更新（允许更改被插入的值）。
 
-```mysql
+```sql
 CREATE TRIGGER neworder AFTER INSERT ON order
 FOR EACH ROW SELECT NEW.order_num; #返回新的订单号
 ```
 
 DELETE 触发器可以引用名为 OLD 的虚拟表，访问被删除的行。OLD中的值全都是只读的，不能更新。
 
-```mysql
+```sql
 CREATE TRIGGER deleteorder BEFORE DELETE ON orders
 FOR EACH ROW
 BEGIN
@@ -43,7 +43,7 @@ UPDATE 触发器可以引用名为 OLD 的虚拟表访问以前的值，引用�
 
 下面的例子保证州名缩写总是大写。
 
-```mysql
+```sql
 CREATE TRIGGER updatevendor BEFORE UPDATE ON vendor
 FOR EACH ROW SET NEW.vend_state = Upper(NEW.vend_state);
 ```

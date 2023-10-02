@@ -4,7 +4,7 @@ MySQL用户账号和信息存储在名为mysql的MySQL数据库中。
 
 获取用户账号列表：
 
-```mysql
+```sql
 USE mysql;
 SELECT user FROM user;
 ```

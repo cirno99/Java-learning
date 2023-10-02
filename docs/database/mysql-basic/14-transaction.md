@@ -8,7 +8,7 @@ CREATE/DROP 操作不能回退，即便可以执行回退操作，回退不会�
 
 ## 语法
 
-```mysql
+```sql
 START TRANSACTION;
 DELETE FROM orderitems WHERE order_num = 20010;
 DELETE FROM orders WHERE order_num = 20010;
@@ -23,7 +23,7 @@ COMMIT;
 
 保留点在事务处理完成后自动释放。
 
-```mysql
+```sql
 ...
 SAVEPOINT delete1;
 ...

@@ -10,7 +10,7 @@
 
 返回产品平均价格的存储过程：
 
-```mysql
+```sql
 CREATE PROCEDURE productpricing() # 可以接受参数
 BEGIN
 	SELECT Avg(prod_price) AS priceaverage
@@ -34,7 +34,7 @@ BEGIN/END 用来限定存储过程体。此段代码仅创建了存储过程，�
 MySQL支持IN（传递给存储过程）、OUT（从存储过程传出）和INOUT（对存储过程传入和传出）类型的参数。
 接受订单号并返回该订单的金额：
 
-```mysql
+```sql
 CREATE PROCEDURE ordertotal(
 	IN ordernum INT,
 	OUT ordersum DECIMAL(8, 2)
@@ -54,7 +54,7 @@ END;
 
 获取订单税后金额（订单金额+税收）。
 
-```mysql
+```sql
 CREATE PROCEDURE ordertotal(
 	IN onum INT,
 	IN taxable BOOLEAN, # 是否计税
@@ -78,7 +78,7 @@ END;
 
 调用存储过程：
 
-```mysql
+```sql
 CALL ordertotal(20005, 1, @total);
 SELECT @total;
 ```
@@ -87,7 +87,7 @@ SELECT @total;
 
 创建存储过程的 CREATE 语句。
 
-```mysql
+```sql
 SHOW CREATE PROCEDURE ordertotal;
 ```
 
@@ -95,7 +95,7 @@ SHOW CREATE PROCEDURE ordertotal;
 
 查看存储过程状态：
 
-```mysql
+```sql
 SHOW PROCEDURE status;
 ```
 

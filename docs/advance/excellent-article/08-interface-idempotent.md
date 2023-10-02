@@ -68,7 +68,7 @@ head:
 
 如果更新已有数据,可以进行加锁更新,也可以设计表结构时使用乐观锁,通过version来做乐观锁,这样既能保证执行效率,又能保证幂等, 乐观锁的version版本在更新业务数据要自增。
 
-```mysql
+```sql
 update table set version = version + 1 where id = #{id} and version = #{version}
 ```
 

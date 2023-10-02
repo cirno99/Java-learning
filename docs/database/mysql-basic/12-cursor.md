@@ -6,7 +6,7 @@
 
 DECLARE 命名游标。存储过程处理完成后，游标便消失（游标只存在于存储过程）。定义游标之后，便可以打开它。
 
-```mysql
+```sql
 CREATE PROCEDURE processorders()
 BEGIN
 	DECLARE ordernumbers CURSOR
@@ -20,7 +20,7 @@ END;
 `OPEN ordernumbers` 打开游标。
 `CLOSE ordernumbers` CLOSE释放游标使用的所有内部内存和资源。
 
-```mysql
+```sql
 CREATE PROCEDURE processorders()
 BEGIN
 

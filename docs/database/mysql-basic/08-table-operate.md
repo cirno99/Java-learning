@@ -2,7 +2,7 @@
 
 ## 创建表
 
-```mysql
+```sql
 CREATE TABLE productnotes
 (
 	note_id int NOT NULL AUTO_INCREMENT,
@@ -21,21 +21,21 @@ CREATE TABLE productnotes
 
 添加列：
 
-```mysql
+```sql
 ALTER TABLE vendors
 ADD vend_phone CHAR(20);
 ```
 
 删除列：
 
-```mysql
+```sql
 ALTER TABLE vendors
 DROP COLUMN vend_phone;
 ```
 
 更改列属性：
 
-```mysql
+```sql
 ALTER TABLE vendors
 MODIFY vend_phone CHAR(16);
 ```
@@ -57,28 +57,28 @@ MODIFY vend_phone CHAR(16);
 
 添加主键约束：
 
-```mysql
+```sql
 ALTER TABLE vendors
 ADD CONSTRAINT pk_vendors PRIMARY KEY(vend_id);
 ```
 
 删除主键约束：
 
-```mysql
+```sql
 ALTER TABLE vendors
 DROP PRIMARY KEY;
 ```
 
 添加外键约束：
 
-```mysql
+```sql
 ALTER TABLE products
 ADD FOREIGN KEY(vendor_id) REFERENCES vendors(vendor_id);
 ```
 
 删除外键约束：
 
-```mysql
+```sql
 ALTER TABLE products DROP FOREIGN KEY vendor_id;
 ```
 

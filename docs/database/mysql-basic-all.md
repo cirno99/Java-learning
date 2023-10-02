@@ -95,7 +95,7 @@ BLOB和TEXT存储方式不同，TEXT以文本方式存储，英文存储区分�
 
 ## 数据库操作
 
-```mysql
+```sql
 SHOW DATABASES;
 CREATE DATABASE db_name;
 USE db_name;
@@ -116,14 +116,14 @@ DROP DATABASE db_name;
 
 检索不同的行：
 
-```mysql
+```sql
 SELECT DISTINCT vend_id
 FROM products;
 ```
 
 限制结果：
 
-```mysql
+```sql
 SELECT prod_name
 FROM products
 LIMIT 0, 5; #开始位置，行数|返回从第0行开始的5行数据
@@ -131,7 +131,7 @@ LIMIT 0, 5; #开始位置，行数|返回从第0行开始的5行数据
 
 ## 排序
 
-```mysql
+```sql
 SELECT prod_name
 FROM products
 ORDER BY prod_name, prod_price DESC; #先按名称排序，再按价格排序 | DESC降序排列，默认ASC升序
@@ -139,7 +139,7 @@ ORDER BY prod_name, prod_price DESC; #先按名称排序，再按价格排序 | 
 
 找出最贵的物品：
 
-```mysql
+```sql
 SELECT prod_price
 FROM products
 ORDER BY prod_price DESC
@@ -163,7 +163,7 @@ LIMIT 1; # 仅返回一行
 
 ### 不匹配检查：
 
-```mysql
+```sql
 SELECT vend_id, prod_name
 FROM products
 WHERE vend_id <> 1003;
@@ -171,7 +171,7 @@ WHERE vend_id <> 1003;
 
 ### 范围查询：
 
-```mysql
+```sql
 SELECT prod_name, prod_price
 FROM products
 WHERE prod_price BETWEEN 5 AND 10;
@@ -179,7 +179,7 @@ WHERE prod_price BETWEEN 5 AND 10;
 
 ### 空值检查
 
-```mysql
+```sql
 SELECT prod_name
 FROM products
 WHERE prod_price IS NULL;
@@ -187,7 +187,7 @@ WHERE prod_price IS NULL;
 
 ### 计算次序
 
-```mysql
+```sql
 SELECT prod_name, prod_price
 FROM products
 WHERE vend_id = 1002 OR vend_id = 1003 AND prod_price >= 10; # AND优先级大于OR
@@ -195,7 +195,7 @@ WHERE vend_id = 1002 OR vend_id = 1003 AND prod_price >= 10; # AND优先级大�
 
 ### IN 操作符
 
-```mysql
+```sql
 SELECT prod_name, product_price
 FROM products
 WHERE vend_id IN (1002, 1003)
@@ -208,7 +208,7 @@ IN操作符一般比OR操作符清单执行更快。IN的最大优点是可以�
 
 MySQL支持使用NOT 对IN 、BETWEEN 和EXISTS子句取反。
 
-```mysql
+```sql
 SELECT prod_name, product_price
 FROM products
 WHERE vend_id NOT IN (1002, 1003)
@@ -218,7 +218,7 @@ WHERE vend_id NOT IN (1002, 1003)
 
 % 匹配0到多个任意字符。
 
-```mysql
+```sql
 SELECT prod_id, prod_name
 FROM products
 WHERE prod_name LIKE '%jet%';
@@ -226,7 +226,7 @@ WHERE prod_name LIKE '%jet%';
 
 _ 匹配单个字符。
 
-```mysql
+```sql
 SELECT prod_id, prod_name
 FROM products
 WHERE prod_name LIKE '_jet_';
@@ -242,7 +242,7 @@ limit 0,4 ：从第0条记录开始，取4条
 
 OR 匹配：
 
-```mysql
+```sql
 SELECT prod_name
 FROM products
 WHERE prod_name REGEXP '1000|2000'
@@ -251,7 +251,7 @@ ORDER BY prod_name;
 
 匹配特定字符：
 
-```mysql
+```sql
 SELECT prod_name
 FROM products
 WHERE prod_name REGEXP '[123] Rely' #匹配1或2或3 [^123]取反
@@ -260,7 +260,7 @@ ORDER BY prod_name;
 
 匹配范围：
 
-```mysql
+```sql
 SELECT prod_name
 FROM products
 WHERE prod_anem REGEXP '[1-5] Ton';#匹配1-5任意一个数字，[a-z]同理
@@ -268,7 +268,7 @@ WHERE prod_anem REGEXP '[1-5] Ton';#匹配1-5任意一个数字，[a-z]同理
 
 匹配特殊字符：
 
-```mysql
+```sql
 SELECT prod_name
 FROM products
 WHERE prod_anem REGEXP '\\.';#转义
@@ -276,7 +276,7 @@ WHERE prod_anem REGEXP '\\.';#转义
 
 匹配多个实例:
 
-```mysql
+```sql
 SELECT prod_name
 FROM products
 WHERE prod_anem REGEXP '\\([0-9] sticks?\\)'; #?匹配它前面的任何字符出现0次或1次
@@ -284,7 +284,7 @@ WHERE prod_anem REGEXP '\\([0-9] sticks?\\)'; #?匹配它前面的任何字符�
 
 匹配连着的四个数：
 
-```mysql
+```sql
 SELECT prod_name
 FROM products
 WHERE prod_anem REGEXP '[[:digit:]]{4}'; #[:digit:]匹配任意数字
@@ -301,7 +301,7 @@ WHERE prod_anem REGEXP '[[:digit:]]{4}'; #[:digit:]匹配任意数字
 
 查找一个数（包括小数点开始的数）开始的所有产品：
 
-```mysql
+```sql
 SELECT prod_name
 FROM products
 WHERE prod_name REGEXP '^[0-9\\.]'
@@ -310,7 +310,7 @@ ORDER BY prod_name;
 
 简单的正则表达式测试：
 
-```mysql
+```sql
 SELECT 'hello' REGEXP '[0-9]';#REGEXP检查返回0或1；此处返回0
 ```
 
@@ -320,7 +320,7 @@ SELECT 'hello' REGEXP '[0-9]';#REGEXP检查返回0或1；此处返回0
 
 MySQL使用Concat()函数实现拼接。
 
-```mysql
+```sql
 SELECT Concat(RTrim(vend_name), ' (', vend_country, ')') #RTrim()去掉右边空格 | Trim()去掉两边空格
 FROM vend_name
 ORDER BY vend_name;
@@ -331,7 +331,7 @@ ORDER BY vend_name;
 
 ## 计算字段
 
-```mysql
+```sql
 SELECT prod_id, quantity, item_price, quantity*item_price AS expanded_price
 FROM orderitems
 WHERE order_num = 2005;
@@ -341,7 +341,7 @@ WHERE order_num = 2005;
 
 ## 文本处理
 
-```mysql
+```sql
 SELECT vend_name, Upper(vend_name) AS vend_name_upcase
 FROM vendors
 ORDER BY vend_name;
@@ -349,7 +349,7 @@ ORDER BY vend_name;
 
 Soundex()函数，匹配所有同音字符串。
 
-```mysql
+```sql
 SELECT cust_name, cust_contact
 FROM customers
 WHERE Soundex(cust_contact) = Soundex('Y Lie');
@@ -362,7 +362,7 @@ WHERE Soundex(cust_contact) = Soundex('Y Lie');
 ![](http://img.topjavaer.cn/img/20220530235607.png)
 查找2005年9月的所有订单：
 
-```mysql
+```sql
 SELECT cust_id, order_num
 FROM orders
 WHERE Date(order_date) BETWEEN '2005-09-01' AND '2005-09-30';
@@ -370,7 +370,7 @@ WHERE Date(order_date) BETWEEN '2005-09-01' AND '2005-09-30';
 
 或者
 
-```mysql
+```sql
 SELECT cust_id, order_num
 FROM orders
 WHERE Year(order_date) = 2005 AND Month(order_date) = 9;
@@ -390,7 +390,7 @@ Max:求最大值
  Min:求最小值
  Count:求记录
 
-```mysql
+```sql
 SELECT SUM(item_price*quanlity) AS total_price
 FROM orderitems
 WHERE order_num = 2005;
@@ -398,7 +398,7 @@ WHERE order_num = 2005;
 
 聚集不同值：
 
-```mysql
+```sql
 SELECT AVG(DISTINCT prod_price) AS avg_price #只考虑不同价格
 FROM products
 WHERE vend_id = 1003;
@@ -408,7 +408,7 @@ WHERE vend_id = 1003;
 
 单独地使用group  by没意义，它只能显示出每组记录的第一条记录。
 
-```mysql
+```sql
 SELECT * FROM orders
 GROUP BY cust_id;
 ```
@@ -417,7 +417,7 @@ GROUP BY cust_id;
 
 除聚集计算语句外，SELECT语句中的每个列都必须在GROUP BY子句中给出。
 
-```mysql
+```sql
 SELECT vend_id, COUNT(*) AS num_prods #vend_id在GROUP BY子句给出
 FROM products
 GROUP BY vend_id;
@@ -429,7 +429,7 @@ GROUP BY子句必须出现在WHERE子句之后，ORDER BY子句之前。
 
 having 用来分组查询后指定一些条件来输出查询结果，having作用和where类似，但是having只能用在group  by场合，并且必须位于group  by之后order  by之前。
 
-```mysql
+```sql
 SELECT cust_id, COUNT(*) AS orders
 FROM orders
 GROUP BY cust_id
@@ -438,7 +438,7 @@ HAVING COUNT(*) >= 2;
 
 ## having和where区别
 
-```mysql
+```sql
 SELECT cust_id FROM orders GROUP BY cust_id HAVING COUNT(cust_id) >= 2;
 SELECT cust_id FROM orders GROUP BY cust_id WHERE COUNT(cust_id) >= 2; #Error Code : 1064
 ```
@@ -451,7 +451,7 @@ SELECT cust_id FROM orders GROUP BY cust_id WHERE COUNT(cust_id) >= 2; #Error Co
 
 - WHERE在数据分组前进行过滤，HAVING在数据分组后进行过滤。
 
-```mysql
+```sql
 SELECT vend_id, COUNT(*) AS num_prods
 FROM products
 WHERE prod_price >= 10
@@ -463,7 +463,7 @@ WHERE子句过滤所有prod_price至少为10的行。然后按vend_id分组数�
 
 ## SELECT 子句顺序
 
-```mysql
+```sql
 SELECT
 FROM
 WHERE
@@ -479,7 +479,7 @@ LIMIT
 
 由于性能的限制，不能嵌套太多的子查询。
 
-```mysql
+```sql
 SELECT cust_id
 FROM orders
 WHERE order_num IN (SELECT order_num
@@ -495,7 +495,7 @@ WHERE order_num IN (SELECT order_num
 
 找出供应商生产的产品。
 
-```mysql
+```sql
 SELECT vend_name, prod_name
 FROM vendors INNER JOIN products
 ON vendors.vend_id = products.vend_id; #连接条件使用on子句
@@ -503,7 +503,7 @@ ON vendors.vend_id = products.vend_id; #连接条件使用on子句
 
 等价于：
 
-```mysql
+```sql
 SELECT vend_name, prod_name
 FROM vendors, products
 WHERE vendors.vend_id = products.vend_id;
@@ -515,7 +515,7 @@ WHERE vendors.vend_id = products.vend_id;
 
 找出生产nike的供应商生产的所有物品。
 
-```mysql
+```sql
 SELECT prod_id, prod_name
 FROM products AS p1, products AS p2
 WHERE p1.vend_id = p2.vend_id
@@ -526,7 +526,7 @@ WHERE p1.vend_id = p2.vend_id
 
 natural join是对两张表中字段名和数据类型都相同的字段进行**等值连接**，并返回符合条件的结果 。
 
-```mysql
+```sql
 SELECT * FROM role NATURAL JOIN user_role;
 ```
 
@@ -538,7 +538,7 @@ SELECT * FROM role NATURAL JOIN user_role;
 
 显示符合连接条件的记录。没有设置连接条件则返回笛卡尔积的结果。join 默认是 inner join。
 
-```mysql
+```sql
 SELECT * FROM role INNNER JOIN user_role
 ```
 
@@ -549,7 +549,7 @@ SELECT * FROM role INNNER JOIN user_role
 join…using(column)按指定的属性做等值连接。
 join…on tableA.column1 = tableB.column2 指定条件。
 
-```mysql
+```sql
 SELECT * FROM role INNER JOIN user_role ON role.role_id = user_role.role_id
 ```
 
@@ -565,7 +565,7 @@ SELECT * FROM role INNER JOIN user_role ON role.role_id = user_role.role_id
 
 查找所有客户及其订单，包括没有下过订单的客户。使用左外连接，保留左边表的所有记录。
 
-```mysql
+```sql
 SELECT customer.cust_id, order.order_num
 FROM customers LEFT OUTER JOIN orders
 ON customers.cust_id = order.cust_id;
@@ -573,7 +573,7 @@ ON customers.cust_id = order.cust_id;
 
 ## 多表连接
 
-```mysql
+```sql
 SELECT goal.player, eteam.teamname, game.stadium, game.mdate
 FROM game JOIN goal
 ON game.id = goal.matchid 
@@ -590,7 +590,7 @@ WHERE eteam.id = 'GRE'
 
 UNION中的每个查询必须包含相同的列、表达式或聚集函数。列数据类型必须兼容。
 
-```mysql
+```sql
 SELECT vend_id, prod_id
 FROM products
 WHERE prod_price <= 5
@@ -615,7 +615,7 @@ UNION 默认会去掉重复的行，使用 UNION ALL可以返回所有匹配行�
 
 启动全文搜索（仅在MyISAM数据库引擎中支持全文本搜索）：
 
-```mysql
+```sql
 CREATE TABLE productnotes
 (
 	note_id int NOT NULL AUTO_INCREMENT,
@@ -631,7 +631,7 @@ CREATE TABLE productnotes
 
 使用全文搜索：
 
-```mysql
+```sql
 SELECT note_text
 FROM productnotes
 WHERE Match(note_text) Against('shoe'); #Match指定搜索列，Against指定搜索词
@@ -641,7 +641,7 @@ WHERE Match(note_text) Against('shoe'); #Match指定搜索列，Against指定搜
 
 全文搜索会对返回结果进行排序，具有高等级的行先返回：
 
-```mysql
+```sql
 SELECT note_text,
 	Match(note_text) Against('shoes') AS rank #等级由MySQL根据行中词的数目、唯一词的数目、整个索引中词的总数以及包含该词的行的数目计算出来。
 FROM productnotes;
@@ -655,7 +655,7 @@ FROM productnotes;
 
 ## 创建表
 
-```mysql
+```sql
 CREATE TABLE productnotes
 (
 	note_id int NOT NULL AUTO_INCREMENT,
@@ -674,21 +674,21 @@ CREATE TABLE productnotes
 
 添加列：
 
-```mysql
+```sql
 ALTER TABLE vendors
 ADD vend_phone CHAR(20);
 ```
 
 删除列：
 
-```mysql
+```sql
 ALTER TABLE vendors
 DROP COLUMN vend_phone;
 ```
 
 更改列属性：
 
-```mysql
+```sql
 ALTER TABLE vendors
 MODIFY vend_phone CHAR(16);
 ```
@@ -710,28 +710,28 @@ MODIFY vend_phone CHAR(16);
 
 添加主键约束：
 
-```mysql
+```sql
 ALTER TABLE vendors
 ADD CONSTRAINT pk_vendors PRIMARY KEY(vend_id);
 ```
 
 删除主键约束：
 
-```mysql
+```sql
 ALTER TABLE vendors
 DROP PRIMARY KEY;
 ```
 
 添加外键约束：
 
-```mysql
+```sql
 ALTER TABLE products
 ADD FOREIGN KEY(vendor_id) REFERENCES vendors(vendor_id);
 ```
 
 删除外键约束：
 
-```mysql
+```sql
 ALTER TABLE products DROP FOREIGN KEY vendor_id;
 ```
 
@@ -765,7 +765,7 @@ ALTER TABLE products DROP FOREIGN KEY vendor_id;
 
 MySQL用单条INSERT语句处理多个插入比使用多条INSERT语句快。
 
-```mysql
+```sql
 INSERT INTO customers(cust_name, cust_city)
 	VALUES('Tyson', 'GD'),
 		('sophia','GZ');
@@ -777,7 +777,7 @@ INSERT操作可能很耗时（特别是有很多索引需要更新时），而�
 
 如果用UPDATE语句更新多行，并且在更新这些行中的一行或多行时出一个现错误，则整个UPDATE操作被取消。为了在发生错误时也继续进行更新，可使用IGNORE关键字：`UPDATE IGNORE customers...`
 
-```mysql
+```sql
 UPDATE customers
 SET cust_city = NULL
 WHERE cust_id = 1005;
@@ -789,7 +789,7 @@ WHERE cust_id = 1005;
 
 如果想从表中删除所有行，不要使用DELETE。可使用TRUNCATE TABLE语句，它完成相同的工作，但速度更快（TRUNCATE实际是删除原来的表并重新创建一个表，而不是逐行删除表中的数据）。
 
-```mysql
+```sql
 DELETE FROM customers
 WHERE cust_id = 1006;
 ```
@@ -798,7 +798,7 @@ WHERE cust_id = 1006;
 
 delete使用别名的时候，要在delete和from间加上删除表的别名。
 
-```mysql
+```sql
 DELETE a #加上删除表的别名
 FROM table1 a
 WHERE a.status = 0
@@ -848,7 +848,7 @@ MyISAM是一个性能极高的引擎，它支持全文本搜索，但不支持�
 `CREATE ORREPLACE VIEW`：更新视图，相当于先用`DROP`再用`CREATE`
 ## 简化复杂连接
 创建一个视图，返回订购了任意产品的客户列表。
-```mysql
+```sql
 CREATE VIEW productcustomers AS
 SELECT cust_name, orders, orderitems
 FROM customers, orders, orderitems
@@ -856,7 +856,7 @@ WHERE orderitems.order_num = orders.order_num
 	AND customers.cust_id = orders.cust_id;
 ```
 使用视图：
-```mysql
+```sql
 SELECT cust_name, cust_contact
 FROM productcustomers
 WHERE prod_id = 'nike';
@@ -876,7 +876,7 @@ WHERE prod_id = 'nike';
 - 提高性能，存储过程比单独SQL语句更快；
 ## 创建
 返回产品平均价格的存储过程：
-```mysql
+```sql
 CREATE PROCEDURE productpricing() # 可以接受参数
 BEGIN
 	SELECT Avg(prod_price) AS priceaverage
@@ -892,7 +892,7 @@ BEGIN/END 用来限定存储过程体。此段代码仅创建了存储过程，�
 ## 参数
 MySQL支持IN（传递给存储过程）、OUT（从存储过程传出）和INOUT（对存储过程传入和传出）类型的参数。
 接受订单号并返回该订单的金额：
-```mysql
+```sql
 CREATE PROCEDURE ordertotal(
 	IN ordernum INT,
 	OUT ordersum DECIMAL(8, 2)
@@ -908,7 +908,7 @@ END;
 显示订单金额：`SELECT @total;`
 ## 实例
 获取订单税后金额（订单金额+税收）。
-```mysql
+```sql
 CREATE PROCEDURE ordertotal(
 	IN onum INT,
 	IN taxable BOOLEAN, # 是否计税
@@ -930,20 +930,20 @@ BEGIN
 END;
 ```
 调用存储过程：
-```mysql
+```sql
 CALL ordertotal(20005, 1, @total);
 SELECT @total;
 ```
 ## 查看
 创建存储过程的 CREATE 语句。
-```mysql
+```sql
 SHOW CREATE PROCEDURE ordertotal;
 ```
 获得包括何时、由谁创建等详细信息的存储过程列表，使用`SHOW PROCEDURE STATUS LIKE 'ordertotal';`
 
 查看存储过程状态：
 
-```mysql
+```sql
 SHOW PROCEDURE status;
 ```
 
@@ -951,7 +951,7 @@ SHOW PROCEDURE status;
 存储了游标之后，应用程序可以根据需要滚动或浏览其中的数据。MySQL游标只能用于存储过程（和函数）。
 ## 创建游标
 DECLARE 命名游标。存储过程处理完成后，游标便消失（游标只存在于存储过程）。定义游标之后，便可以打开它。
-```mysql
+```sql
 CREATE PROCEDURE processorders()
 BEGIN
 	DECLARE ordernumbers CURSOR
@@ -962,7 +962,7 @@ END;
 ## 使用游标
 `OPEN ordernumbers` 打开游标。
 `CLOSE ordernumbers` CLOSE释放游标使用的所有内部内存和资源。
-```mysql
+```sql
 CREATE PROCEDURE processorders()
 BEGIN
 
@@ -1005,7 +1005,7 @@ END;
 触发器提供SQL语句自动执行的功能。DELETE/INSERT/UPDATE支持触发器，其他SQL语句不支持。
 ## 创建
 创建触发器四要素：1.唯一的触发器名（MySQL5规定触发器名在表中唯一，数据库没要求）；2.触发器关联的表；3.相应的SQL语句；4.何时执行（处理之前或者之后）。
-```mysql
+```sql
 CREATE TRIGGER newproduct AFTER INSERT ON products #插入之后执行
 FOR EACH ROW SELECT 'product added'; #对每个插入行执行
 ```
@@ -1017,14 +1017,14 @@ FOR EACH ROW SELECT 'product added'; #对每个插入行执行
 
 INSERT 触发器可饮用名为 NEW  的虚拟表，访问被插入的行。NEW中的值也可以被更新（允许更改被插入的值）。
 
-```mysql
+```sql
 CREATE TRIGGER neworder AFTER INSERT ON order
 FOR EACH ROW SELECT NEW.order_num; #返回新的订单号
 ```
 
 DELETE 触发器可以引用名为 OLD 的虚拟表，访问被删除的行。OLD中的值全都是只读的，不能更新。
 
-```mysql
+```sql
 CREATE TRIGGER deleteorder BEFORE DELETE ON orders
 FOR EACH ROW
 BEGIN
@@ -1039,7 +1039,7 @@ UPDATE 触发器可以引用名为 OLD 的虚拟表访问以前的值，引用�
 
 下面的例子保证州名缩写总是大写。
 
-```mysql
+```sql
 CREATE TRIGGER updatevendor BEFORE UPDATE ON vendor
 FOR EACH ROW SET NEW.vend_state = Upper(NEW.vend_state);
 ```
@@ -1056,7 +1056,7 @@ CREATE/DROP 操作不能回退，即便可以执行回退操作，回退不会�
 
 ## 语法
 
-```mysql
+```sql
 START TRANSACTION;
 DELETE FROM orderitems WHERE order_num = 20010;
 DELETE FROM orders WHERE order_num = 20010;
@@ -1071,7 +1071,7 @@ COMMIT;
 
 保留点在事务处理完成后自动释放。
 
-```mysql
+```sql
 ...
 SAVEPOINT delete1;
 ...
@@ -1086,7 +1086,7 @@ MySQL用户账号和信息存储在名为mysql的MySQL数据库中。
 
 获取用户账号列表：
 
-```mysql
+```sql
 USE mysql;
 SELECT user FROM user;
 ```
@@ -1144,7 +1144,7 @@ LIKE很慢，最好是使用FULLTEXT而不是LIKE。
 
 ALTER TABLE用来创建普通索引、UNIQUE索引或PRIMARY KEY索引。
 
-```mysql
+```sql
 ALTER TABLE table_name ADD INDEX index_name (column_list)
 ALTER TABLE table_name ADD UNIQUE (column_list)
 ALTER TABLE table_name ADD PRIMARY KEY (column_list)
@@ -1152,7 +1152,7 @@ ALTER TABLE table_name ADD PRIMARY KEY (column_list)
 
 CREATE INDEX可对表增加普通索引或UNIQUE索引。
 
-```mysql
+```sql
 CREATE INDEX index_name ON table_name (column_list)
 CREATE UNIQUE INDEX index_name ON table_name (column_list)
 ```
@@ -1161,7 +1161,7 @@ CREATE UNIQUE INDEX index_name ON table_name (column_list)
 
 ## 删除索引
 
-```mysql
+```sql
 DROP INDEX index_name ON talbe_name
 ALTER TABLE table_name DROP INDEX index_name
 ALTER TABLE table_name DROP PRIMARY KEY #只有一个主键，不需要指定索引名
@@ -1169,7 +1169,7 @@ ALTER TABLE table_name DROP PRIMARY KEY #只有一个主键，不需要指定索
 
 ## 查看索引
 
-```mysql
+```sql
 show index from tblname;
 show keys from tblname;
 ```

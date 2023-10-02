@@ -2,7 +2,7 @@
 
 单独地使用group  by没意义，它只能显示出每组记录的第一条记录。
 
-```mysql
+```sql
 SELECT * FROM orders
 GROUP BY cust_id;
 ```
@@ -11,7 +11,7 @@ GROUP BY cust_id;
 
 除聚集计算语句外，SELECT语句中的每个列都必须在GROUP BY子句中给出。
 
-```mysql
+```sql
 SELECT vend_id, COUNT(*) AS num_prods #vend_id在GROUP BY子句给出
 FROM products
 GROUP BY vend_id;
@@ -23,7 +23,7 @@ GROUP BY子句必须出现在WHERE子句之后，ORDER BY子句之前。
 
 having 用来分组查询后指定一些条件来输出查询结果，having作用和where类似，但是having只能用在group  by场合，并且必须位于group  by之后order  by之前。
 
-```mysql
+```sql
 SELECT cust_id, COUNT(*) AS orders
 FROM orders
 GROUP BY cust_id
@@ -32,7 +32,7 @@ HAVING COUNT(*) >= 2;
 
 ## having和where区别
 
-```mysql
+```sql
 SELECT cust_id FROM orders GROUP BY cust_id HAVING COUNT(cust_id) >= 2;
 SELECT cust_id FROM orders GROUP BY cust_id WHERE COUNT(cust_id) >= 2; #Error Code : 1064
 ```
@@ -45,7 +45,7 @@ SELECT cust_id FROM orders GROUP BY cust_id WHERE COUNT(cust_id) >= 2; #Error Co
 
 - WHERE在数据分组前进行过滤，HAVING在数据分组后进行过滤。
 
-```mysql
+```sql
 SELECT vend_id, COUNT(*) AS num_prods
 FROM products
 WHERE prod_price >= 10

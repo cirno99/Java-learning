@@ -49,7 +49,7 @@ CREATE TABLE `discuss` (
 
 表示查询中执行select子句或者操作表的顺序，**`id`的值越大，代表优先级越高，越先执行**。
 
-```mysql
+```sql
 explain select discuss_body 
 from discuss 
 where blog_id = (
@@ -159,7 +159,7 @@ index包括select索引列，order by主键两种情况。
 
 以下SQL的执行计划`ref`为`const`，因为使用了组合索引`(user_id, blog_id)`，`where user_id = 13`中13为常量。
 
-```mysql
+```sql
 mysql> explain select blog_id from user_like where user_id = 13;
 +----+-------------+-----------+------------+------+---------------+------+---------+-------+------+----------+-------------+
 | id | select_type | table     | partitions | type | possible_keys | key  | key_len | ref   | rows | filtered | Extra       |
@@ -170,7 +170,7 @@ mysql> explain select blog_id from user_like where user_id = 13;
 
 而下面这个SQL的执行计划`ref`值为`NULL`，因为`key`为`NULL`，查询没有用到索引。
 
-```mysql
+```sql
 mysql> explain select user_id from user_like where status = 1;
 +----+-------------+-----------+------------+------+---------------+------+---------+------+------+----------+-------------+
 | id | select_type | table     | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra       |

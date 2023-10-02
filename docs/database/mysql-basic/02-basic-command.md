@@ -9,7 +9,7 @@
 
 ## 数据库操作
 
-```mysql
+```sql
 SHOW DATABASES;
 CREATE DATABASE db_name;
 USE db_name;
@@ -30,14 +30,14 @@ DROP DATABASE db_name;
 
 检索不同的行：
 
-```mysql
+```sql
 SELECT DISTINCT vend_id
 FROM products;
 ```
 
 限制结果：
 
-```mysql
+```sql
 SELECT prod_name
 FROM products
 LIMIT 0, 5; #开始位置，行数|返回从第0行开始的5行数据
@@ -45,7 +45,7 @@ LIMIT 0, 5; #开始位置，行数|返回从第0行开始的5行数据
 
 ## 排序
 
-```mysql
+```sql
 SELECT prod_name
 FROM products
 ORDER BY prod_name, prod_price DESC; #先按名称排序，再按价格排序 | DESC降序排列，默认ASC升序
@@ -53,7 +53,7 @@ ORDER BY prod_name, prod_price DESC; #先按名称排序，再按价格排序 | 
 
 找出最贵的物品：
 
-```mysql
+```sql
 SELECT prod_price
 FROM products
 ORDER BY prod_price DESC
@@ -77,7 +77,7 @@ LIMIT 1; # 仅返回一行
 
 ### 不匹配检查：
 
-```mysql
+```sql
 SELECT vend_id, prod_name
 FROM products
 WHERE vend_id <> 1003;
@@ -85,7 +85,7 @@ WHERE vend_id <> 1003;
 
 ### 范围查询：
 
-```mysql
+```sql
 SELECT prod_name, prod_price
 FROM products
 WHERE prod_price BETWEEN 5 AND 10;
@@ -93,7 +93,7 @@ WHERE prod_price BETWEEN 5 AND 10;
 
 ### 空值检查
 
-```mysql
+```sql
 SELECT prod_name
 FROM products
 WHERE prod_price IS NULL;
@@ -101,7 +101,7 @@ WHERE prod_price IS NULL;
 
 ### 计算次序
 
-```mysql
+```sql
 SELECT prod_name, prod_price
 FROM products
 WHERE vend_id = 1002 OR vend_id = 1003 AND prod_price >= 10; # AND优先级大于OR
@@ -109,7 +109,7 @@ WHERE vend_id = 1002 OR vend_id = 1003 AND prod_price >= 10; # AND优先级大�
 
 ### IN 操作符
 
-```mysql
+```sql
 SELECT prod_name, product_price
 FROM products
 WHERE vend_id IN (1002, 1003)
@@ -122,7 +122,7 @@ IN操作符一般比OR操作符清单执行更快。IN的最大优点是可以�
 
 MySQL支持使用NOT 对IN 、BETWEEN 和EXISTS子句取反。
 
-```mysql
+```sql
 SELECT prod_name, product_price
 FROM products
 WHERE vend_id NOT IN (1002, 1003)
@@ -132,7 +132,7 @@ WHERE vend_id NOT IN (1002, 1003)
 
 % 匹配0到多个任意字符。
 
-```mysql
+```sql
 SELECT prod_id, prod_name
 FROM products
 WHERE prod_name LIKE '%jet%';
@@ -140,7 +140,7 @@ WHERE prod_name LIKE '%jet%';
 
 _ 匹配单个字符。
 
-```mysql
+```sql
 SELECT prod_id, prod_name
 FROM products
 WHERE prod_name LIKE '_jet_';
@@ -156,7 +156,7 @@ limit 0,4 ：从第0条记录开始，取4条
 
 OR 匹配：
 
-```mysql
+```sql
 SELECT prod_name
 FROM products
 WHERE prod_name REGEXP '1000|2000'
@@ -165,7 +165,7 @@ ORDER BY prod_name;
 
 匹配特定字符：
 
-```mysql
+```sql
 SELECT prod_name
 FROM products
 WHERE prod_name REGEXP '[123] Rely' #匹配1或2或3 [^123]取反
@@ -174,7 +174,7 @@ ORDER BY prod_name;
 
 匹配范围：
 
-```mysql
+```sql
 SELECT prod_name
 FROM products
 WHERE prod_anem REGEXP '[1-5] Ton';#匹配1-5任意一个数字，[a-z]同理
@@ -182,7 +182,7 @@ WHERE prod_anem REGEXP '[1-5] Ton';#匹配1-5任意一个数字，[a-z]同理
 
 匹配特殊字符：
 
-```mysql
+```sql
 SELECT prod_name
 FROM products
 WHERE prod_anem REGEXP '\\.';#转义
@@ -190,7 +190,7 @@ WHERE prod_anem REGEXP '\\.';#转义
 
 匹配多个实例:
 
-```mysql
+```sql
 SELECT prod_name
 FROM products
 WHERE prod_anem REGEXP '\\([0-9] sticks?\\)'; #?匹配它前面的任何字符出现0次或1次
@@ -198,7 +198,7 @@ WHERE prod_anem REGEXP '\\([0-9] sticks?\\)'; #?匹配它前面的任何字符�
 
 匹配连着的四个数：
 
-```mysql
+```sql
 SELECT prod_name
 FROM products
 WHERE prod_anem REGEXP '[[:digit:]]{4}'; #[:digit:]匹配任意数字
@@ -215,7 +215,7 @@ WHERE prod_anem REGEXP '[[:digit:]]{4}'; #[:digit:]匹配任意数字
 
 查找一个数（包括小数点开始的数）开始的所有产品：
 
-```mysql
+```sql
 SELECT prod_name
 FROM products
 WHERE prod_name REGEXP '^[0-9\\.]'
@@ -224,7 +224,7 @@ ORDER BY prod_name;
 
 简单的正则表达式测试：
 
-```mysql
+```sql
 SELECT 'hello' REGEXP '[0-9]';#REGEXP检查返回0或1；此处返回0
 ```
 

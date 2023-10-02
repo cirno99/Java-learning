@@ -123,7 +123,7 @@ Mybatis 仅支持 association 关联对象和 collection 关联集合对象的�
 
 #{ } 被解析成预编译语句，预编译之后可以直接执行，不需要重新编译sql。
 
-```mysql
+```sql
 //sqlMap 中如下的 sql 语句
 select * from user where name = #{name};
 //解析成为预编译语句；编译好SQL语句再取值
@@ -132,7 +132,7 @@ select * from user where name = ?;
 
 ${ } 仅仅为一个字符串替换，每次执行sql之前需要进行编译，存在 sql 注入问题。
 
-```mysql
+```sql
 select * from user where name = '${name}'
 //传递的参数为 "ruhua" 时,解析为如下，然后发送数据库服务器进行编译。取值以后再去编译SQL语句。
 select * from user where name = "ruhua";

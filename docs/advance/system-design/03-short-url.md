@@ -87,7 +87,7 @@ The document has moved <A HREF="https://www.howardliu.cn/how-to-use-branch-effic
 
 一般这种数据的存储无非就两种：关系型数据库或 NoSQL 数据库。有了上面的创建逻辑，存储就是水到渠成的了。下面给出 MySQL 存储的建表语句：
 
-```mysql
+```sql
 CREATE TABLE IF NOT EXISTS tiny_url
 (
     sid                INT AUTO_INCREMENT PRIMARY KEY,

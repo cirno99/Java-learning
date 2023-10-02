@@ -3,7 +3,7 @@
 
 找出供应商生产的产品。
 
-```mysql
+```sql
 SELECT vend_name, prod_name
 FROM vendors INNER JOIN products
 ON vendors.vend_id = products.vend_id; #连接条件使用on子句
@@ -11,7 +11,7 @@ ON vendors.vend_id = products.vend_id; #连接条件使用on子句
 
 等价于：
 
-```mysql
+```sql
 SELECT vend_name, prod_name
 FROM vendors, products
 WHERE vendors.vend_id = products.vend_id;
@@ -23,7 +23,7 @@ WHERE vendors.vend_id = products.vend_id;
 
 找出生产nike的供应商生产的所有物品。
 
-```mysql
+```sql
 SELECT prod_id, prod_name
 FROM products AS p1, products AS p2
 WHERE p1.vend_id = p2.vend_id
@@ -34,7 +34,7 @@ WHERE p1.vend_id = p2.vend_id
 
 natural join是对两张表中字段名和数据类型都相同的字段进行**等值连接**，并返回符合条件的结果 。
 
-```mysql
+```sql
 SELECT * FROM role NATURAL JOIN user_role;
 ```
 
@@ -46,7 +46,7 @@ SELECT * FROM role NATURAL JOIN user_role;
 
 显示符合连接条件的记录。没有设置连接条件则返回笛卡尔积的结果。join 默认是 inner join。
 
-```mysql
+```sql
 SELECT * FROM role INNNER JOIN user_role
 ```
 
@@ -57,7 +57,7 @@ SELECT * FROM role INNNER JOIN user_role
 join…using(column)按指定的属性做等值连接。
 join…on tableA.column1 = tableB.column2 指定条件。
 
-```mysql
+```sql
 SELECT * FROM role INNER JOIN user_role ON role.role_id = user_role.role_id
 ```
 
@@ -73,7 +73,7 @@ SELECT * FROM role INNER JOIN user_role ON role.role_id = user_role.role_id
 
 查找所有客户及其订单，包括没有下过订单的客户。使用左外连接，保留左边表的所有记录。
 
-```mysql
+```sql
 SELECT customer.cust_id, order.order_num
 FROM customers LEFT OUTER JOIN orders
 ON customers.cust_id = order.cust_id;
@@ -81,7 +81,7 @@ ON customers.cust_id = order.cust_id;
 
 ## 多表连接
 
-```mysql
+```sql
 SELECT goal.player, eteam.teamname, game.stadium, game.mdate
 FROM game JOIN goal
 ON game.id = goal.matchid 

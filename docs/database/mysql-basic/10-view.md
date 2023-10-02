@@ -29,7 +29,7 @@
 
 创建一个视图，返回订购了任意产品的客户列表。
 
-```mysql
+```sql
 CREATE VIEW productcustomers AS
 SELECT cust_name, orders, orderitems
 FROM customers, orders, orderitems
@@ -39,7 +39,7 @@ WHERE orderitems.order_num = orders.order_num
 
 使用视图：
 
-```mysql
+```sql
 SELECT cust_name, cust_contact
 FROM productcustomers
 WHERE prod_id = 'nike';

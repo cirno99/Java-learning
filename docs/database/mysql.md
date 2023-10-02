@@ -83,13 +83,13 @@ MySQL数据库为我们提供的四种隔离级别：
 
 查看隔离级别：
 
-```mysql
+```sql
 select @@transaction_isolation;
 ```
 
 设置隔离级别：
 
-```mysql
+```sql
 set session transaction isolation level read uncommitted;
 ```
 
@@ -125,7 +125,7 @@ set session transaction isolation level read uncommitted;
 
 同样都是字母d，unicode比ascii多使用了一个字节，如下：
 
-```mysql
+```sql
 D   ASCII:           01100100
 D Unicode:  00000000 01100100
 ```
@@ -231,7 +231,7 @@ B+ 树是基于B 树和叶子节点顺序访问指针进行实现，它具有B�
 
 MySQL 数据库使用最多的索引类型是`BTREE`索引，底层基于B+树数据结构来实现。
 
-```mysql
+```sql
 mysql> show index from blog\G;
 *************************** 1. row ***************************
         Table: blog
@@ -276,7 +276,7 @@ Index_comment:
 
 2、**唯一索引**：索引列中的值必须是唯一的，但是允许为空值。唯一索引和主键索引的区别是：唯一索引字段可以为null且可以存在多个null值，而主键索引字段不可以为null。唯一索引的用途：唯一标识数据库表中的每条记录，主要是用来防止数据重复插入。创建唯一索引的SQL语句如下：
 
-```mysql
+```sql
 ALTER TABLE table_name
 ADD CONSTRAINT constraint_name UNIQUE KEY(column_1,column_2,...);
 ```
@@ -319,13 +319,13 @@ InnoDB使用表的主键构造主键索引树，同时叶子节点中存放的�
 
 比如`user_like` 用户点赞表，组合索引为`(user_id, blog_id)`，`user_id`和`blog_id`都不为`null`。
 
-```mysql
+```sql
 explain select blog_id from user_like where user_id = 13;
 ```
 
 `explain`结果的`Extra`列为`Using index`，查询的列被索引覆盖，并且where筛选条件符合最左前缀原则，通过**索引查找**就能直接找到符合条件的数据，不需要回表查询数据。
 
-```mysql
+```sql
 explain select user_id from user_like where blog_id = 1;
 ```
 
@@ -365,7 +365,7 @@ explain select user_id from user_like where blog_id = 1;
 
 建立前缀索引的方式：
 
-```mysql
+```sql
 // email列创建前缀索引
 ALTER TABLE table_name ADD KEY(column_name(prefix_length));
 ```
@@ -547,13 +547,13 @@ MVCC 的实现依赖于版本链，版本链是通过表的三个隐藏字段实
 
 3、事务a插入数据然后提交；
 
-```mysql
+```sql
 insert into user(user_name, user_password, user_mail, user_state) values('tyson', 'a', 'a', 0);
 ```
 
 4、事务b执行全表的update；
 
-```mysql
+```sql
 update user set user_name = 'a';
 ```
 
@@ -576,7 +576,7 @@ next-key包括两部分：行锁和间隙锁。行锁是加在索引上的锁，
 
 SELECT 的读取锁定主要分为两种方式：共享锁和排他锁。
 
-```mysql
+```sql
 select * from table where id<6 lock in share mode;--共享锁
 select * from table where id<6 for update;--排他锁
 ```
@@ -750,7 +750,7 @@ create table test_hash_partiotion
 
 举个例子，查询语句如下：
 
-```mysql
+```sql
 select * from user where id > 1 and name = '大彬';
 ```
 
@@ -766,7 +766,7 @@ select * from user where id > 1 and name = '大彬';
 
 举个例子，更新语句如下：
 
-```mysql
+```sql
 update user set name = '大彬' where id = 1;
 ```
 
@@ -783,13 +783,13 @@ update user set name = '大彬' where id = 1;
 
 `exists`用于对外表记录做筛选。`exists`会遍历外表，将外查询表的每一行，代入内查询进行判断。当`exists`里的条件语句能够返回记录行时，条件就为真，返回外表当前记录。反之如果`exists`里的条件语句不能返回记录行，条件为假，则外表当前记录被丢弃。
 
-```mysql
+```sql
 select a.* from A awhere exists(select 1 from B b where a.id=b.id)
 ```
 
 `in`是先把后边的语句查出来放到临时表中，然后遍历临时表，将临时表的每一行，代入外查询去查找。
 
-```mysql
+```sql
 select * from Awhere id in(select id from B)
 ```
 
@@ -907,7 +907,7 @@ select * from xxx  where id >=(select id from xxx order by id limit 500000, 1) o
 
 在拿到了上面的id之后，假设这个id正好等于500000，那sql就变成了
 
-```mysql
+```sql
 select * from xxx  where id >=500000 order by id limit 10;
 ```
 
@@ -917,7 +917,7 @@ select * from xxx  where id >=500000 order by id limit 10;
 
 将所有的数据**根据id主键进行排序**，然后分批次取，将当前批次的最大id作为下次筛选的条件进行查询。
 
-```mysql
+```sql
 select * from xxx where id > start_id order by id limit 10;
 ```
 
@@ -929,7 +929,7 @@ InnoDB存储引擎有自己的最小储存单元——页（Page）。
 
 查询InnoDB页大小的命令如下：
 
-```mysql
+```sql
 mysql> show global status like 'innodb_page_size';
 +------------------+-------+
 | Variable_name    | Value |

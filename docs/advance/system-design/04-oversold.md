@@ -33,7 +33,7 @@ head:
 
 那么其他99个在更新的时候，会发觉version并不等于上次select的version，就说明version被其他线程修改过了，则放弃此次update，重试直到成功。
 
-```mysql
+```sql
 select version from goods WHERE id= 1001
 update goods set num = num - 1, version = version + 1 WHERE id= 1001 AND num > 0 AND version = @version(上面查到的version);
 ```
