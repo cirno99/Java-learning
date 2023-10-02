@@ -10,8 +10,8 @@ star: true
 
 ## Git总结
 
-- [Git简介](./1-introduce.md)
-- [Git基础](./2-basic.md)
-- [远程仓库](./3-remote-repo.md)
-- [标签](./4-label.md)
-- [git分支](./5-branch.md)
+- [Git简介](./01-introduce.md)
+- [Git基础](./02-basic.md)
+- [远程仓库](./03-remote-repo.md)
+- [标签](./04-label.md)
+- [git分支](./05-branch.md)

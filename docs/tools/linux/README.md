@@ -5,8 +5,8 @@
 
 ## Linux基础命令
 
-- [基本操作](./1-basic.md)
-- [磁盘,文件,目录相关操作](./2-disk-file.md)
-- [检索相关](./3-search.md)
-- [网络相关](./4-net.md)
-- [监控linux性能命令](./5-monitor.md)
+- [基本操作](./01-basic.md)
+- [磁盘,文件,目录相关操作](./02-disk-file.md)
+- [检索相关](./03-search.md)
+- [网络相关](./04-net.md)
+- [监控linux性能命令](./05-monitor.md)

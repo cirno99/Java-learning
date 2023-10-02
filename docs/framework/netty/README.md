@@ -12,13 +12,13 @@ star: true
 
 ## Netty总结
 
-- [简介](./1-overview.md)
-- [简单的netty应用程序](./2-make-your-app.md)
-- [Netty的组件和设计](./3-component.md)
-- [传输](./4-transport.md)
-- [ChannelHandler](./6-channel-handler.md)
-- [ChannelPipeline接口](./7-channel-pipeline.md)
-- [EventLoop和线程模型](./8-eventloop-thread-model.md)
-- [引导](./9-guide.md)
+- [简介](./01-overview.md)
+- [简单的netty应用程序](./02-make-your-app.md)
+- [Netty的组件和设计](./03-component.md)
+- [传输](./04-transport.md)
+- [ChannelHandler](./06-channel-handler.md)
+- [ChannelPipeline接口](./07-channel-pipeline.md)
+- [EventLoop和线程模型](./08-eventloop-thread-model.md)
+- [引导](./09-guide.md)
 - [编解码器](./10-encoder-decoder.md)
 - [预置的ChannelHandler和编解码器](./11-preset-channel-handler.md)

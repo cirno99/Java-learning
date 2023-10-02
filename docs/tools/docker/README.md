@@ -9,9 +9,9 @@ star: true
 ![](http://img.topjavaer.cn/img/docker-img.png)
 ## Docker总结
 
-- [简介](./1-introduce.md)
-- [docker镜像常用命令](./2-image-command.md)
-- [docker容器常用命令](./3-container-command.md)
-- [docker-compose](./4-docker-compose.md)
-- [maven插件构建docker镜像](./5-maven-build.md)
-- [其他](./6-other.md)
+- [简介](./01-introduce.md)
+- [docker镜像常用命令](./02-image-command.md)
+- [docker容器常用命令](./03-container-command.md)
+- [docker-compose](./04-docker-compose.md)
+- [maven插件构建docker镜像](./05-maven-build.md)
+- [其他](./06-other.md)

@@ -1,9 +1,9 @@
 ## 目录
 
-- [1.两数之和-梦开始的地方！！](./1-two-sum.md)
-- [3.无重复字符的最长子串](./3-longest-substring-without-repeating-characters.md)
-- [5.最长回文子串](./5-longest-palindromic-substring.md)
-- [7.整数反转](./7-reverse-integer.md)
+- [1.两数之和-梦开始的地方！！](./01-two-sum.md)
+- [3.无重复字符的最长子串](./03-longest-substring-without-repeating-characters.md)
+- [5.最长回文子串](./05-longest-palindromic-substring.md)
+- [7.整数反转](./07-reverse-integer.md)
 - [15.三数之和](./15-3sum.md)
 - [19.删除链表的倒数第N个结点](./19-remove-nth-node-from-end-of-list.md)
 - [22.括号生成](./22-generate-parentheses.md)
