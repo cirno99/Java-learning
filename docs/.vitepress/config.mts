@@ -67,7 +67,7 @@ export default defineConfig({
             {
                 text: "关系型数据库",
                 items: [
-                    {text: "MySQL基础", link: "/database/mysql-basic/", },
+                    {text: "MySQL基础", link: "/database/mysql-basic/01-data-type.md", },
                     {text: "MySQL面试题", link: "/database/mysql.md", },
                     {text: "MySQL执行计划详解", link: "/database/mysql-execution-plan.md", },
                 ]
@@ -99,21 +99,21 @@ export default defineConfig({
             {
                 text: "海量数据",
                 items: [
-                    {text: "统计不同号码的个数", link: "/mass-data/1-count-phone-num.md", },
-                    {text: "出现频率最高的100个词", link: "/mass-data/2-find-hign-frequency-word.md", },
-                    {text: "查找两个大文件共同的URL", link: "/mass-data/3-find-same-url.md", },
-                    {text: "如何在100亿数据中找到中位数？", link: "/mass-data/4-find-mid-num.md", },
-                    {text: "如何查询最热门的查询串？", link: "/mass-data/5-find-hot-string.md", },
-                    {text: "如何找出排名前 500 的数？", link: "/mass-data/6-top-500-num.md", },
-                    {text: "如何按照 query 的频度排序？", link: "/mass-data/7-query-frequency-sort.md", },
-                    {text: "大数据中 TopK 问题的常用套路", link: "/mass-data/8-topk-template.md", },
+                    {text: "统计不同号码的个数", link: "/mass-data/01-count-phone-num.md", },
+                    {text: "出现频率最高的100个词", link: "/mass-data/02-find-hign-frequency-word.md", },
+                    {text: "查找两个大文件共同的URL", link: "/mass-data/03-find-same-url.md", },
+                    {text: "如何在100亿数据中找到中位数？", link: "/mass-data/04-find-mid-num.md", },
+                    {text: "如何查询最热门的查询串？", link: "/mass-data/05-find-hot-string.md", },
+                    {text: "如何找出排名前 500 的数？", link: "/mass-data/06-top-500-num.md", },
+                    {text: "如何按照 query 的频度排序？", link: "/mass-data/07-query-frequency-sort.md", },
+                    {text: "大数据中 TopK 问题的常用套路", link: "/mass-data/08-topk-template.md", },
                 ]
             },
             {
                 text: "系统设计",
                 items: [
-                    {text: "扫码登录设计", link: "/advance/system-design/1-scan-code-login.md", },
-                    {text: "超时订单自动取消", link: "/advance/system-design/2-order-timeout-auto-cancel.md", },
+                    {text: "扫码登录设计", link: "/advance/system-design/01-scan-code-login.md", },
+                    {text: "超时订单自动取消", link: "/advance/system-design/02-order-timeout-auto-cancel.md", },
                     {text: "短链系统设计", link: "/advance/system-design/README.md", },
                     {text: "微信红包系统如何设计？", link: "/advance/system-design/README.md", },
                     {text: "单点登录设计与实现", link: "/advance/system-design/README.md", },
@@ -129,19 +129,19 @@ export default defineConfig({
         {
         text: "分布式",
         items: [
-          {text: "全局唯一ID", link: "/advance/distributed/1-global-unique-id.md", },
-          {text: "分布式锁", link: "/advance/distributed/2-distributed-lock.md", },
-          {text: "RPC", link: "/advance/distributed/3-rpc.md", },
-          {text: "微服务", link: "/advance/distributed/4-micro-service.md", },
-          {text: "分布式架构", link: "/advance/distributed/5-distibuted-arch.md", },
-          {text: "分布式事务", link: "/advance/distributed/6-distributed-transaction.md", },
+          {text: "全局唯一ID", link: "/advance/distributed/01-global-unique-id.md", },
+          {text: "分布式锁", link: "/advance/distributed/02-distributed-lock.md", },
+          {text: "RPC", link: "/advance/distributed/03-rpc.md", },
+          {text: "微服务", link: "/advance/distributed/04-micro-service.md", },
+          {text: "分布式架构", link: "/advance/distributed/05-distibuted-arch.md", },
+          {text: "分布式事务", link: "/advance/distributed/06-distributed-transaction.md", },
         ]
       },
         {
         text: "高并发",
         items: [
-          {text: "限流", link: "/advance/concurrent/1-current-limiting.md", },
-          {text: "负载均衡", link: "/advance/concurrent/2-load-balance.md", },
+          {text: "限流", link: "/advance/concurrent/01-current-limiting.md", },
+          {text: "负载均衡", link: "/advance/concurrent/02-load-balance.md", },
         ],
       },
             {
